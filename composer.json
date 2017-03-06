@@ -1,0 +1,31 @@
+{
+  "name": "buuum/redsys",
+  "type": "library",
+  "description": "Simple php class with redsys soap",
+  "homepage": "https://github.com/buuum/Redsys",
+  "keywords": [
+    "redsys",
+    "soap"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alfons Martinez",
+      "email": "alfonsmartinezparra@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Buuum\\": "src/Redsys"
+    }
+  },
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "suggest": {
+    "redsys/messages": "Allows messages errors from error code"
+  }
+}
