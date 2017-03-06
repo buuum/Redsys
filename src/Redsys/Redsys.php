@@ -29,7 +29,7 @@ class Redsys
      * Redsys constructor.
      * @param string $key
      */
-    public function __construct(string $key)
+    public function __construct($key)
     {
         $this->key = $key;
     }
@@ -117,7 +117,7 @@ class Redsys
     /**
      * @param string $url
      */
-    public function setNotification(string $url = '')
+    public function setNotification($url = "")
     {
         $this->_parameters['DS_MERCHANT_MERCHANTURL'] = $url;
     }
@@ -125,7 +125,7 @@ class Redsys
     /**
      * @param string $url
      */
-    public function setUrlOk(string $url = '')
+    public function setUrlOk($url = "")
     {
         $this->_parameters['DS_MERCHANT_URLOK'] = $url;
     }
@@ -133,7 +133,7 @@ class Redsys
     /**
      * @param string $url
      */
-    public function setUrlKo(string $url = '')
+    public function setUrlKo($url = "")
     {
         $this->_parameters['DS_MERCHANT_URLKO'] = $url;
     }
@@ -328,7 +328,7 @@ class Redsys
      * @param string $xml
      * @return array
      */
-    private function xmltoArray(string $xml)
+    private function xmltoArray($xml)
     {
         $xml = simplexml_load_string($xml, "SimpleXMLElement", LIBXML_NOCDATA);
         $json = json_encode($xml);
