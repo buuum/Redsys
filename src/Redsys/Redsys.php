@@ -347,17 +347,36 @@ class Redsys
      */
     private function checkResponse($response)
     {
-        $code = $response['CODIGO'];
 
-        if (!$this->validCode($code)) {
-            return $this->getResponse($code, $response['RECIBIDO']['REQUEST']['DATOSENTRADA'], true);
+        if (!$this->validCode($response)) {
+            return $this->getResponse($this->getErrorCode($response), $this->getErrorCodeData($response), true);
         }
 
         if (!$this->checkResponseSignature($response['OPERACION'])) {
             return $this->getResponse('SIS041', $response['OPERACION'], true);
         }
 
-        return $this->getResponse($code, $response['OPERACION']);
+        return $this->getResponse($response['CODIGO'], $response['OPERACION']);
+    }
+
+    private function getErrorCode($response){
+        $code = $response['CODIGO'];
+
+        if (!is_numeric($code)) {
+            return $code;
+        }
+
+        return $response['OPERACION']['Ds_Response'];
+    }
+
+    private function getErrorCodeData($response){
+        $code = $response['CODIGO'];
+
+        if (!is_numeric($code)) {
+            return $response['RECIBIDO']['REQUEST']['DATOSENTRADA'];
+        }
+
+        return $response['OPERACION'];
     }
 
     /**
@@ -415,14 +434,18 @@ class Redsys
     }
 
     /**
-     * @param $code
+     * @param $response
      * @return bool
      */
-    private function validCode($code)
+    private function validCode($response)
     {
+        $code = $response['CODIGO'];
+
         if (!is_numeric($code)) {
             return false;
         }
+
+        $code = $response['OPERACION']['Ds_Response'];
 
         if ($code >= 0 && $code < 100) {
             return true;
