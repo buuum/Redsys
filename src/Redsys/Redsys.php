@@ -61,7 +61,7 @@ class Redsys
         if (strlen(trim($value)) > 0) {
             $this->_parameters['DS_MERCHANT_IDENTIFIER'] = $value;
         } else {
-            throw new \Exception('Please add value');
+            throw new \Exception('DS_MERCHANT_IDENTIFIER not valid');
         }
     }
 
@@ -78,7 +78,7 @@ class Redsys
             $amount = intval(strval($amount * 100));
             $this->_parameters['DS_MERCHANT_AMOUNT'] = $amount;
         } else {
-            throw new \Exception('Amount must be greater than equal 0.');
+            throw new \Exception('DS_MERCHANT_AMOUNT not valid');
         }
     }
 
@@ -93,7 +93,7 @@ class Redsys
         if (strlen(trim($fuc)) > 0) {
             $this->_parameters['DS_MERCHANT_MERCHANTCODE'] = $fuc;
         } else {
-            throw new \Exception('Please add Fuc');
+            throw new \Exception('DS_MERCHANT_MERCHANTCODE not valid');
         }
     }
 
@@ -110,7 +110,7 @@ class Redsys
         if (strlen(trim($method)) > 0) {
             $this->_parameters['DS_MERCHANT_PAYMETHODS'] = trim($method);
         } else {
-            throw new \Exception('Add pay method');
+            throw new \Exception('DS_MERCHANT_PAYMETHODS not valid');
         }
     }
 
@@ -149,7 +149,7 @@ class Redsys
         if (strlen(trim($tradename)) > 0) {
             $this->_parameters['DS_MERCHANT_MERCHANTNAME'] = trim($tradename);
         } else {
-            throw new \Exception('Add name for Trade name');
+            throw new \Exception('DS_MERCHANT_MERCHANTNAME not valid');
         }
     }
 
@@ -164,7 +164,7 @@ class Redsys
         if (strlen(trim($description)) > 0) {
             $this->_parameters['DS_MERCHANT_PRODUCTDESCRIPTION'] = trim($description);
         } else {
-            throw new \Exception('Add product description');
+            throw new \Exception('DS_MERCHANT_PRODUCTDESCRIPTION not valid');
         }
     }
 
@@ -179,7 +179,7 @@ class Redsys
         if (strlen(trim($titular)) > 0) {
             $this->_parameters['DS_MERCHANT_TITULAR'] = trim($titular);
         } else {
-            throw new \Exception('Add name for the user');
+            throw new \Exception('DS_MERCHANT_TITULAR not valid');
         }
     }
 
@@ -199,7 +199,7 @@ class Redsys
         if (strlen(trim($order)) > 0) {
             $this->_parameters['DS_MERCHANT_ORDER'] = $order;
         } else {
-            throw new \Exception('Add Order');
+            throw new \Exception('DS_MERCHANT_ORDER not valid');
         }
     }
 
@@ -226,7 +226,7 @@ class Redsys
         if (strlen(trim($transaction)) > 0) {
             $this->_parameters['DS_MERCHANT_TRANSACTIONTYPE'] = $transaction;
         } else {
-            throw new \Exception('Please add transaction type');
+            throw new \Exception('DS_MERCHANT_TRANSACTIONTYPE not valid');
         }
     }
 
@@ -242,7 +242,7 @@ class Redsys
         if (intval($terminal) != 0) {
             $this->_parameters['DS_MERCHANT_TERMINAL'] = $terminal;
         } else {
-            throw new \Exception('Terminal is not valid.');
+            throw new \Exception('DS_MERCHANT_TERMINAL not valid');
         }
     }
 
@@ -258,7 +258,7 @@ class Redsys
         if (intval($pan) != 0) {
             $this->_parameters['DS_MERCHANT_PAN'] = $pan;
         } else {
-            throw new \Exception('PAN is not valid.');
+            throw new \Exception('DS_MERCHANT_PAN not valid');
         }
     }
 
@@ -304,7 +304,7 @@ class Redsys
         if (is_bool($flat)) {
             $this->_parameters['DS_MERCHANT_DIRECTPAYMENT '] = $flat;
         } else {
-            throw new \Exception('Please set true or false');
+            throw new \Exception('DS_MERCHANT_DIRECTPAYMENT not valid');
         }
     }
 
@@ -399,7 +399,7 @@ class Redsys
                 return $this->getResponse('SIS041', $decodec, true);
             }
         } else {
-            throw new \Exception("Add data return of bank");
+            throw new \Exception("Error: Redsys response empty");
         }
     }
 
@@ -537,7 +537,7 @@ class Redsys
             }
 
         } else {
-            throw new \Exception('Add test or live');
+            throw new \Exception('Enviroment not valid');
         }
 
         return $_enviroment;
