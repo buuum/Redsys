@@ -353,7 +353,7 @@ class Redsys
         }
 
         if (!$this->checkResponseSignature($response['OPERACION'])) {
-            return $this->getResponse('SIS041', $response['OPERACION'], true);
+            return $this->getResponse('SIS0041', $response['OPERACION'], true);
         }
 
         return $this->getResponse($response['CODIGO'], $response['OPERACION']);
