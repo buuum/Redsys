@@ -447,6 +447,10 @@ class Redsys
 
         $code = $response['OPERACION']['Ds_Response'];
 
+        if (!is_numeric($code)) {
+            return false;
+        }
+
         if ($code >= 0 && $code < 100) {
             return true;
         }
