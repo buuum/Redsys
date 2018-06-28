@@ -424,8 +424,21 @@ class Redsys
      */
     private function checkResponseSignature($response)
     {
-        $cadena = $response['Ds_Amount'] . $response['Ds_Order'] . $response['Ds_MerchantCode'] . $response['Ds_Currency'] .
-            $response['Ds_Response'] . $response['Ds_TransactionType'] . $response['Ds_SecurePayment'];
+        $cadena = '';
+        $fields = [
+            'Ds_Amount',
+            'Ds_Order',
+            'Ds_MerchantCode',
+            'Ds_Currency',
+            'Ds_Response',
+            'Ds_CardNumber',
+            'Ds_TransactionType',
+            'Ds_SecurePayment',
+        ];
+
+        foreach($fields as $field){
+            if(array_key_exists($field, $response)) $cadena.= $response[$field];
+        }
 
         if ($this->generateSignature($cadena, $response['Ds_Order']) != $response['Ds_Signature']) {
             return false;
