@@ -415,6 +415,14 @@ class Redsys
             'error' => $error,
             'code'  => $code
         ];
+
+        if(!$response){
+            if(!$response_default['code']){
+                $response_default['code'] = '9998';
+            }
+            return $response_default;
+        }
+
         return array_merge($response_default, $response);
     }
 
